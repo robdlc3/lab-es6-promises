@@ -134,12 +134,16 @@ let p4 = obtainInstruction('brusselsSprouts', 3)
 let p5 = obtainInstruction('brusselsSprouts', 4)
 let p6 = obtainInstruction('brusselsSprouts', 5)
 let p7 = obtainInstruction('brusselsSprouts', 6)
+let p8 = obtainInstruction('brusselsSprouts', 7)
 
 
-Promise.all([p1, p2, p3, p4, p5, p6, p7]).then((values) => {
-  values.forEach((elem) => {
-    document.querySelector("#brusselsSprouts").innerHTML += `<li>${elem}</li>`
-    document.querySelector("#brusselsSprouts").innerHTML += `<li>Brussels sprouts are ready!</li>`;
-  });
-  document.querySelector("#brusselsSproutsImg").removeAttribute("hidden");
-});
+Promise.all([p1, p2, p3, p4, p5, p6, p7])
+  .then((results) => {
+    results.forEach((result) => {
+      document.querySelector("#brusselsSproutsImg").innerHTML += `<li>${result}</li>`
+    })
+  })
+  .then(() => {
+    document.querySelector("#brusselsSproutsImg").removeAttribute("hidden");
+  })
+
